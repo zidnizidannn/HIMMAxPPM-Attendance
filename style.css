@@ -1,0 +1,36 @@
+@font-face { font-family: 'boldfont'; src: url(font/THE\ BOLD\ FONT.ttf); }
+@font-face { font-family: 'heavitas'; src: url(font/Heavitas.ttf); }
+@font-face { font-family: 'florensa'; src: url(font/Florensa-Demo.ttf); }
+@font-face { font-family: 'bebas'; src: url(font/BebasKai.ttf); }
+@font-face { font-family: 'roboto'; src: url(font/Roboto-Regular.ttf); }
+@font-face { font-family: 'poppins-reg'; src: url(font/Poppins-Regular.ttf); }
+
+body{
+    background-color: #e4e3e3;
+    height: 100vh;
+    font-family: poppins-reg;
+}
+.him
+.container{
+    width: 50%;
+}
+.form-card {
+    width: 60%;
+    margin: 50px auto;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.form-control {
+margin-bottom: 20px;
+}
+
+.btn {
+background-color: #088b29;
+color: #fff;
+}
+.sapa{
+    font-family: Arial, Helvetica, sans-serif;
+}
