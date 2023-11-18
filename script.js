@@ -9,3 +9,8 @@ document.getElementById("overlay").addEventListener("click", function() {
         this.style.display = "none";
     }, 500);
 });
+
+document.getElementById('registerLink').addEventListener('click', function() {
+    var registerOffcanvas = new bootstrap.Offcanvas(document.getElementById('registerOffcanvas'));
+    registerOffcanvas.toggle();
+});

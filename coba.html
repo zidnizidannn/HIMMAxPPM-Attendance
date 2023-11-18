@@ -8,64 +8,114 @@
     <title>Halo Sobat</title>
     <style>
         *{
-            /* border: 1px solid red; */
+            border: 1px solid red;
         }
         .login{
             left: 50%;
             transform: translateX(-50%);
-            font-size: x-small; 
-            width: 60px; 
-            border-radius: 15px; 
+            font-size: 0.75rem;
+            width: 6rem; 
             background-color: #2e2e2e;
             color: white;
             text-decoration: none;
+        }
+        .halo{
+            font-family: bebas; 
+            font-size: 1.5rem; 
+            margin: -0.25rem 0rem;
+        }
+        .hima{
+            font-family: heavitas;
+            font-size: 1.75rem;
+            color: white;
         }
         .offcanvas {
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
         }
+        .form-control {
+            margin-bottom: 20px;
+            width: 20rem;
+            height: 2rem;
+            border: #2e2e2e 2px solid;
+        }
+        .form-control:focus {
+            box-shadow: 0 0 0 0.5px #1CB273;
+            border-color: #1CB273;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+</style>
     </style>
 </head>
 <body>
     <div class="container1 d-flex align-items-center justify-content-center position-relative" style="height: 100%; background-color: #1CB273;">
         <div class="container position-relative d-flex justify-content-start align-items-center p-0" style="height: 65%; width: 80%;">
-            <div class="position-absolute" style="margin-top: -20%;">
-                <h5 class="" style="font-family: bebas;margin: -3% 0%;">Halo Sobat</h5>
-                <p class="m-0" style=" font-family: heavitas; font-size: x-large; color: white;">HIMMA
-                    <span style="font-size: large; color: #2e2e2e;">x</span> PPM
+            <div class="position-absolute" style="margin-top: -4rem;">
+                <h5 class="halo">Halo Sobat</h5>
+                <p class="m-0 hima">HIMMA
+                    <span style="font-size: 1.25rem; color: #2e2e2e; margin: -0.25rem;">x</span> PPM
                 </p>
-            </div>
-            <button class="btn btn-sm login position-absolute bottom-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">masuk</button>
-            <img src="assets/logo hima2.png" style="position: absolute ;width: 20%; margin-bottom: 70%;">
+            </div>            
+            <button class="btn login position-absolute bottom-0 rounded-pill" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">masuk</button>
+            <img src="assets/logo hima2.png" style="position: absolute ;width: 4rem; margin-bottom: 13rem;">
         </div>
-        <div class="apaan position-absolute" style="bottom: 3%; ; font-size: x-small; font-family: roboto;"><a href="" style="color: #2e2e2e;">Apaan nih?</a></div>
-        <img class="himma" src="assets/logo hima4.png" style="position: absolute; width: 50%; opacity: 0.1; left: 0;">
+        <div class="apaan position-absolute" style="bottom: 2rem; ; font-size: x-small; font-family: roboto;"><a href="" style="color: #2e2e2e;">Apaan nih?</a></div>
+        <img class="himma" src="assets/logo hima4.png" style="position: absolute; width: 10rem; opacity: 0.1; left: 0;">
     </div>
-    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel" style="border: 1px solid red; height: 50%;">
-        <!-- <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
-            <button type="button" class="btn-close btn-sm text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div> -->
-        <div style="border: 1px solid red;" class="offcanvas-body" >
-            <div style="border: 1px solid red;" class="row justify-content-center">
-                <div style="border: 1px solid rgb(0, 81, 255);" class="col-md-6">
-                    <form style="border: 1px solid rgb(95, 13, 13);" class="p-4 text-center">
-                        <div style="border: 1px solid red;" class="mb-1">
-                            <input type="text" style="border: 1px solid red;" class="form-control" id="username" placeholder="Username">
-                        </div>
-                        <div style="border: 1px solid red;" class="mb-1">
-                            <input type="email" style="border: 1px solid red;" class="form-control" id="email" placeholder="Email">
-                        </div>
-                        <div style="border: 1px solid red;" class="mb-1">
-                            <input type="password" style="border: 1px solid red;" class="form-control" id="password" placeholder="Password">
-                        </div>
-                        <button type="submit" style="border: 1px solid red;" class="btn mt-2">Login</button>
-                    </form>
+    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel" style="height: 20rem;">
+        <div class="offcanvas-body d-flex align-items-center justify-content-center">
+            <form class="p-1 text-center">
+                <div class="mb-3">
+                    <input type="text" class="form-control rounded-pill" id="username" placeholder="Username atau Email">
                 </div>
-            </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control rounded-pill" id="password" placeholder="Password">
+                </div>
+                <button type="submit" class="mb-3 btn rounded-pill">Login</button>
+                <p style="font-size: 0.75rem;">Belum punya akun? <a href="#" id="registerLink">daftar dulu dong!</a></p>
+            </form>
         </div>
     </div>
-    
+    <!-- ============================================================ -->
+    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasRegister" aria-labelledby="offcanvasRegisterLabel" style="height: 20rem;">
+        <div class="offcanvas-body d-flex align-items-center justify-content-center">
+            <form class="p-1 text-center">
+                <div class="mb-3">
+                    <input type="text" class="form-control rounded-pill" id="registerUsername" placeholder="Username">
+                </div>
+                <div class="mb-3">
+                    <input type="email" class="form-control rounded-pill" id="registerEmail" placeholder="Email">
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control rounded-pill" id="registerPassword" placeholder="Password">
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control rounded-pill" id="confirmPassword" placeholder="Confirm Password">
+                </div>
+                <button type="submit" class="mb-3 btn rounded-pill">Register</button>
+                <p style="font-size: 0.75rem;">Sudah punya akun? <a href="#" id="loginLink">Masuk</a></p>
+            </form>
+        </div>
+    </div>
+
+        <!-- Tambahkan script untuk menangani interaksi tombol -->
+    <script>
+        // Mengambil elemen tombol "daftar dulu dong!"
+        var registerLink = document.getElementById('registerLink');
+
+        // Mengambil elemen offcanvas login dan offcanvas register
+        var offcanvasLogin = new bootstrap.Offcanvas(document.getElementById('offcanvasBottom'));
+        var offcanvasRegister = new bootstrap.Offcanvas(document.getElementById('offcanvasRegister'));
+
+        // Menambahkan event listener untuk mengatur perilaku saat tombol "daftar dulu dong!" diklik
+        registerLink.addEventListener('click', function(event) {
+            // Tutup offcanvas login
+            offcanvasLogin.hide();
+
+            // Buka offcanvas register
+            offcanvasRegister.show();
+        });
+    </script>
     <script src="js/bootstrap.bundle.js"></script>
 </body>
 </html>

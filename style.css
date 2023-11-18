@@ -5,6 +5,10 @@
 @font-face { font-family: 'roboto'; src: url(font/Roboto-Regular.ttf); }
 @font-face { font-family: 'poppins-reg'; src: url(font/Poppins-Regular.ttf); }
 
+html{
+    font-size: 16px;
+}
+
 body{
     background-color: #e4e3e3;
     height: 100vh;
@@ -24,12 +28,12 @@ body{
 }
 
 .form-control {
-margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
-.btn {
-background-color: #088b29;
-color: #fff;
+.login {
+    background-color: #1CB273;
+    color: #fff;
 }
 .sapa{
     font-family: Arial, Helvetica, sans-serif;
