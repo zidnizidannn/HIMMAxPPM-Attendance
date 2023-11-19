@@ -38,7 +38,7 @@
             border-top-right-radius: 10px;
         }
         .form-control {
-            margin-bottom: 20px;
+            margin-bottom: 1.25rem;
             width: 20rem;
             height: 2.5rem;
             border: #2e2e2e 2px solid;
@@ -50,7 +50,7 @@
             border-color: #1CB273;
             transition: box-shadow 0.3s ease-in-out;
         }
-        #passwd{
+        #loginEye{
             cursor: pointer;
             position: absolute;
             right: 10px;
@@ -59,13 +59,12 @@
         }
         .input-icon {
             position: absolute;
-            left: 10px;
+            left: 1rem;
             top: 50%;
             transform: translateY(-50%);
-            width: 1.5rem;
-            height: auto;
+            width: 1.25rem;
         }
-    </style>
+        </style>
 </head>
 <body>
     <div class="container1 d-flex align-items-center justify-content-center position-relative" style="height: 100%; background-color: #1CB273;">
@@ -87,12 +86,12 @@
             <form class="p-1 text-center">
                 <div class="mb-3 position-relative">
                     <img src="assets/icons8-account-96.png" class="input-icon">
-                    <input type="text" class="form-control rounded-pill" id="username" placeholder="Username atau Email">
+                    <input type="text" class="form-control rounded-pill" id="username" placeholder="Username atau Whatsapp">
                 </div>
                 <div class="mb-3 position-relative">
                     <img src="assets/icons8-password.svg" class="input-icon">
-                    <input type="password" class="form-control rounded-pill" id="password" placeholder="Password">
-                    <img src="assets/icons8-eye-96.png" class="eye-icon" id="passwd">
+                    <input type="password" class="form-control rounded-pill" id="loginPass" placeholder="Password">
+                    <img src="assets/icons8-eye-96.png" class="eye-icon" id="loginEye" style="width: 1.5rem;">
                 </div>
                 <button type="submit" class="login mb-3 btn rounded-pill">masuk</button>
                 <p style="font-size: 0.75rem;">Belum punya akun? <a href="#" id="registerLink">pake nanya</a></p>
@@ -102,14 +101,21 @@
     <div class="offcanvas offcanvas-bottom" tabindex="-1" id="registerOffcanvas" aria-labelledby="registerOffcanvasLabel" data-bs-backdrop="false" style="height: 25rem;">
         <div class="offcanvas-body d-flex align-items-center justify-content-center">
             <form class="p-1 text-center">
-                <div class="mb-3">
+                <div class="mb-3 position-relative">
+                    <img src="assets/icons8-account-96.png" class="input-icon">
                     <input type="text" class="form-control rounded-pill" id="newUsername" placeholder="Username Baru">
                 </div>
-                <div class="mb-3">
-                    <input type="email" class="form-control rounded-pill" id="newEmail" placeholder="Email">
+                <div class="mb-3 position-relative">
+                    <img src="assets/icons8-whatsapp.svg" class="input-icon">
+                    <input type="number" class="form-control rounded-pill" id="newNumber" placeholder="No. Whatsapp">
                 </div>
-                <div class="mb-3">
-                    <input type="password" class="form-control rounded-pill" id="newPassword" placeholder="Password Baru">
+                <div class="mb-3 position-relative">
+                    <img src="assets/icons8-password.svg" class="input-icon">
+                    <input type="password" class="form-control rounded-pill" id="regLogin" placeholder="Password Baru">
+                    <img src="assets/icons8-eye-96.png" class="eye-login" id="regEye" style="width: 1.5rem;">
+                </div>
+                <div class="mb-3 position-relative">
+                    <input type="password" class="form-control rounded-pill" id="confirmPassword" placeholder="Konfirmasi Password Baru">
                 </div>
                 <button type="submit" class="login mb-3 btn rounded-pill">Daftar</button>
                 <p style="font-size: 0.75rem;">Udah punya akun? <span class="text-reset" data-bs-dismiss="offcanvas" aria-label=""><a href="#">yaudah</a></span></p>
@@ -124,18 +130,56 @@
             registerOffcanvas.toggle();
         });
 
-        var eyeIcon = document.querySelector('.eye-icon');
-        var passwordInput = document.getElementById('password');
+        var eyeIconLogin = document.getElementById('loginEye');
+        var passwordInputLogin = document.getElementById('loginPass');
+        eyeIconLogin.addEventListener('click', function() {
+            if (passwordInputLogin.type === 'password') {
+                passwordInputLogin.type = 'text';
+                eyeIconLogin.src = 'assets/icons8-eye-96 off.png';
+                eyeIconLogin.style.transition = 'opacity 0.3s ease';
+            } else {
+                passwordInputLogin.type = 'password';
+                eyeIconLogin.src = 'assets/icons8-eye-96.png'; 
+                eyeIconLogin.style.transition = 'opacity 0.3s ease';
+            }
+        });
+        var eyeIcon = document.getElementById('regEye');
+        var passwordInput = document.getElementById('regPass');
         eyeIcon.addEventListener('click', function() {
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
-                eyeIcon.src = 'assets/visibility_off_FILL0_wght400_GRAD0_opsz24.svg';
+                eyeIcon.src = 'assets/icons8-eye-96 off.png';
                 eyeIcon.style.transition = 'opacity 0.3s ease';
             } else {
                 passwordInput.type = 'password';
-                eyeIcon.src = 'assets/icons8-eye-96'; 
+                eyeIcon.src = 'assets/icons8-eye-96.png'; 
                 eyeIcon.style.transition = 'opacity 0.3s ease';
             }
+        });
+        const newPassword = document.getElementById('newPassword');
+        const confirmPassword = document.getElementById('confirmPassword');
+        const passwordMatchMessage = document.getElementById('passwordMatchMessage');
+
+        let lastConfirmedPassword = '';
+
+        confirmPassword.addEventListener('input', function() {
+            if (confirmPassword.value === '') {
+                confirmPassword.style.borderColor = '';
+                confirmPassword.style.boxShadow = '';
+                passwordMatchMessage.style.display = 'none';
+            } else if (newPassword.value !== confirmPassword.value && confirmPassword.value !== lastConfirmedPassword) {
+                confirmPassword.style.borderColor = 'red';
+                confirmPassword.style.boxShadow = '0 0 5px red';
+                passwordMatchMessage.style.display = 'block';
+            } else {
+                confirmPassword.style.borderColor = '';
+                confirmPassword.style.boxShadow = '';
+                passwordMatchMessage.style.display = 'none';
+            }
+        });
+        confirmPassword.addEventListener('blur', function() {
+            confirmPassword.style.borderColor = '';
+            confirmPassword.style.boxShadow = '';
         });
     </script>
     <script src="js/bootstrap.bundle.js"></script>
