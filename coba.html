@@ -77,26 +77,32 @@
         </div>
     </div>
     <!-- ============================================================ -->
-    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasRegister" aria-labelledby="offcanvasRegisterLabel" style="height: 20rem;">
+    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="registerOffcanvas" aria-labelledby="registerOffcanvasLabel" data-bs-backdrop="false" style="height: 25rem;">
         <div class="offcanvas-body d-flex align-items-center justify-content-center">
             <form class="p-1 text-center">
-                <div class="mb-3">
-                    <input type="text" class="form-control rounded-pill" id="registerUsername" placeholder="Username">
+                <div class="mb-3 position-relative">
+                    <img src="assets/icons8-account-96.png" class="input-icon">
+                    <input type="text" class="form-control rounded-pill" id="newUsername" placeholder="Username Baru">
                 </div>
-                <div class="mb-3">
-                    <input type="email" class="form-control rounded-pill" id="registerEmail" placeholder="Email">
+                <div class="mb-3 position-relative">
+                    <img src="assets/icons8-whatsapp.svg" class="input-icon">
+                    <input type="number" class="form-control rounded-pill" id="newNumber" placeholder="No. Whatsapp">
                 </div>
-                <div class="mb-3">
-                    <input type="password" class="form-control rounded-pill" id="registerPassword" placeholder="Password">
+                <div class="mb-3 position-relative">
+                    <img src="assets/icons8-password.svg" class="input-icon">
+                    <input type="password" class="form-control rounded-pill" id="newPassword" placeholder="Password Baru">
                 </div>
-                <div class="mb-3">
-                    <input type="password" class="form-control rounded-pill" id="confirmPassword" placeholder="Confirm Password">
+                <div class="mb-3 position-relative">
+                    <img src="assets/icons8-password.svg" class="input-icon">
+                    <input type="password" class="form-control rounded-pill" id="confirmPassword" placeholder="Konfirmasi Password Baru">
                 </div>
-                <button type="submit" class="mb-3 btn rounded-pill">Register</button>
-                <p style="font-size: 0.75rem;">Sudah punya akun? <a href="#" id="loginLink">Masuk</a></p>
+                <button type="submit" class="login mb-3 btn rounded-pill">Daftar</button>
+                <p id="passwordMatchMessage" style="font-size: 0.75rem; color: red; display: none;">Password tidak cocok</p>
+                <p style="font-size: 0.75rem;">Udah punya akun? <span class="text-reset" data-bs-dismiss="offcanvas" aria-label=""><a href="#">yaudah</a></span></p>
             </form>
         </div>
     </div>
+    
 
         <!-- Tambahkan script untuk menangani interaksi tombol -->
     <script>
@@ -114,6 +120,22 @@
 
             // Buka offcanvas register
             offcanvasRegister.show();
+        });
+
+        const newPassword = document.getElementById('newPassword');
+        const confirmPassword = document.getElementById('confirmPassword');
+        const passwordMatchMessage = document.getElementById('passwordMatchMessage');
+
+        confirmPassword.addEventListener('input', function() {
+            if (newPassword.value !== confirmPassword.value) {
+                confirmPassword.style.borderColor = 'red'; // Atur border menjadi merah
+                confirmPassword.style.boxShadow = '0 0 5px red'; // Atur box shadow menjadi merah
+                passwordMatchMessage.style.display = 'block';
+            } else {
+                confirmPassword.style.borderColor = ''; // Kembalikan border ke nilai default
+                confirmPassword.style.boxShadow = ''; // Kembalikan box shadow ke nilai default
+                passwordMatchMessage.style.display = 'none';
+            }
         });
     </script>
     <script src="js/bootstrap.bundle.js"></script>
