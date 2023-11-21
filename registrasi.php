@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL);
 
 $servername = "localhost";
 $username = "root";
@@ -8,7 +9,7 @@ $dbname = "sakuhimma";
 $db = new mysqli($servername, $username, $password, $dbname);
 
 // Terima data dari form
-$username = $_POST['username'];
+$username = $_POST['userName'];
 $no_wa = $_POST['noWa']; 
 $password = $_POST['pass'];
 

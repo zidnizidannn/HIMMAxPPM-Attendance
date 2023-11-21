@@ -8,7 +8,7 @@
     <title>Halo Sobat</title>
     <style>
         *{
-            /* border: 1px solid red; */
+            border: 1px solid red;
         }
         .halo{
             font-family: bebas; 
@@ -100,22 +100,28 @@
     </div>
     <div class="offcanvas offcanvas-bottom" tabindex="-1" id="registerOffcanvas" aria-labelledby="registerOffcanvasLabel" data-bs-backdrop="false" style="height: 25rem;">
         <div class="offcanvas-body d-flex align-items-center justify-content-center">
-            <form class="p-1 text-center" action="registrasi.php" method="post">
+            <form class="p-1 text-center" action="registrasi.php" method="post" id="registerLink">
                 <div class="mb-3 position-relative">
                     <img src="assets/icons8-account-96.png" class="input-icon">
-                    <input name="userName" type="text" class="form-control rounded-pill" id="newUsername" placeholder="Username Baru">
+                    <input name="userName" type="text" class="form-control rounded-pill" id="newUsername" placeholder="Username Baru" required>
                 </div>
                 <div class="mb-3 position-relative">
                     <img src="assets/icons8-whatsapp.svg" class="input-icon">
-                    <input name="noWa" type="number" class="form-control rounded-pill" id="newNumber" placeholder="No. Whatsapp">
+                    <input name="noWa" type="number" class="form-control rounded-pill" id="newNumber" placeholder="No. Whatsapp" required>
                 </div>
-                <div class="mb-3 position-relative">
+                <!-- <div class="mb-3 position-relative">
                     <img src="assets/icons8-password.svg" class="input-icon">
                     <input name="pass" type="password" class="form-control rounded-pill" id="regPass" placeholder="Password Baru">
                     <img src="assets/icons8-eye-96.png" class="eye-icon" id="regEye" style="width: 1.5rem;">
+                </div> -->
+                <div class="mb-3 position-relative">
+                    <img src="assets/icons8-password.svg" class="input-icon">
+                    <input name="pass" type="password" class="form-control rounded-pill" id="regPass" placeholder="Password Baru" pattern=".{8,}" title="Password harus memiliki setidaknya 8 karakter" required>
+                    <img src="assets/icons8-eye-96.png" class="eye-icon" id="regEye" style="width: 1.5rem;">
+                    <!-- <div class="invalid-feedback">Password harus memiliki setidaknya 8 karakter.</div> -->
                 </div>
                 <div class="mb-3 position-relative">
-                    <input type="password" class="form-control rounded-pill" id="confirmPassword" placeholder="Konfirmasi Password Baru">
+                    <input type="password" class="form-control rounded-pill" id="confirmPassword" placeholder="Konfirmasi Password Baru" required>
                 </div>
                 <button type="submit" class="login mb-3 btn rounded-pill">Daftar</button>
                 <p style="font-size: 0.75rem;">Udah punya akun? <span class="text-reset" data-bs-dismiss="offcanvas" aria-label=""><a href="#">yaudah</a></span></p>
@@ -189,27 +195,41 @@
             confirmPassword.style.boxShadow = '';
         });
 
-        // pass 8 digit
-        const passwordField = document.getElementById('regPass');
+        // Not match con and pass
+        const regPass = document.getElementById('regPass');
         const submitButton = document.querySelector('button[type="submit"]');
 
-        passwordField.addEventListener('input', function() {
-            if (passwordField.value.length < 8) {
-                passwordField.setCustomValidity('Password harus memiliki setidaknya 8 karakter.');
+        confirmPassword.addEventListener('input', function() {
+            if (regPass.value !== confirmPassword.value) {
+                confirmPassword.setCustomValidity('Konfirmasi password tidak cocok');
                 submitButton.disabled = true;
             } else {
-                passwordField.setCustomValidity('');
+                confirmPassword.setCustomValidity('');
                 submitButton.disabled = false;
             }
         });
-        // Jika konfirmasi password diubah, pastikan validasi juga diterapkan pada konfirmasi password
-        confirmPasswordField.addEventListener('input', function() {
-            if (passwordField.value !== confirmPasswordField.value) {
-                confirmPasswordField.setCustomValidity('Konfirmasi password tidak sesuai.');
-            } else {
-                confirmPasswordField.setCustomValidity('');
-            }
-        });
+
+        // pass 8 digit
+        // const passwordField = document.getElementById('regPass');
+        // const submitButton = document.querySelector('button[type="submit"]');
+
+        // passwordField.addEventListener('input', function() {
+        //     if (passwordField.value.length < 3) {
+        //         passwordField.setCustomValidity('Minimal 8 karakter lah biar aman');
+        //         submitButton.disabled = true;
+        //     } else {
+        //         passwordField.setCustomValidity('');
+        //         submitButton.disabled = false;
+        //     }
+        // });
+        // // Jika konfirmasi password diubah, pastikan validasi juga diterapkan pada konfirmasi password
+        // confirmPasswordField.addEventListener('input', function() {
+        //     if (passwordField.value !== confirmPasswordField.value) {
+        //         confirmPasswordField.setCustomValidity('Konfirmasi password tidak sesuai.');
+        //     } else {
+        //         confirmPasswordField.setCustomValidity('');
+        //     }
+        // });
     </script>
     <script src="js/bootstrap.bundle.js"></script>
 </body>
