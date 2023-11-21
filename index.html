@@ -8,7 +8,7 @@
     <title>Halo Sobat</title>
     <style>
         *{
-            border: 1px solid red;
+            /* border: 1px solid red; */
         }
         .halo{
             font-family: bebas; 
@@ -83,14 +83,14 @@
     </div>
     <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel" style="height: 20rem;">
         <div class="offcanvas-body d-flex align-items-center justify-content-center">
-            <form class="p-1 text-center">
+            <form class="p-1 text-center" action="registrasi.php" method="post">
                 <div class="mb-3 position-relative">
                     <img src="assets/icons8-account-96.png" class="input-icon">
-                    <input type="text" class="form-control rounded-pill" id="username" placeholder="Username atau Whatsapp">
+                    <input name="username" type="text" class="form-control rounded-pill" id="username" placeholder="Username atau Whatsapp">
                 </div>
                 <div class="mb-3 position-relative">
                     <img src="assets/icons8-password.svg" class="input-icon">
-                    <input type="password" class="form-control rounded-pill" id="loginPass" placeholder="Password">
+                    <input type="password" class="form-control rounded-pill" id="loginPass" placeholder="Password" name="pass">
                     <img src="assets/icons8-eye-96.png" class="eye-icon" id="loginEye" style="width: 1.5rem;">
                 </div>
                 <button type="submit" class="login mb-3 btn rounded-pill">masuk</button>
@@ -116,7 +116,7 @@
                 </div> -->
                 <div class="mb-3 position-relative">
                     <img src="assets/icons8-password.svg" class="input-icon">
-                    <input name="pass" type="password" class="form-control rounded-pill" id="regPass" placeholder="Password Baru" pattern=".{8,}" title="Password harus memiliki setidaknya 8 karakter" required>
+                    <input name="pass" type="password" class="form-control rounded-pill" id="regPass" placeholder="Password Baru" pattern=".{3,}" title="Password harus memiliki setidaknya 8 karakter" required>
                     <img src="assets/icons8-eye-96.png" class="eye-icon" id="regEye" style="width: 1.5rem;">
                     <!-- <div class="invalid-feedback">Password harus memiliki setidaknya 8 karakter.</div> -->
                 </div>
