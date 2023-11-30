@@ -1,4 +1,5 @@
 <?php
+// ======== Login ========
 error_reporting(E_ALL);
 
 $servername = "localhost";
